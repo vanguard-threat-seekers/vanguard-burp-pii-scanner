@@ -36,7 +36,8 @@ A **PiiScanner Extension** é uma extensão para o Burp Suite desenvolvida para 
   - Selecione o arquivo .jar compilado.
 7. A extensão será carregada automaticamente e estará pronta para uso.
 
-![image](https://github.com/user-attachments/assets/370fc693-9514-43e2-a2f9-7ae0df914b73)
+![image](https://github.com/user-attachments/assets/36726470-f50f-4b9e-85c2-89b881b060eb)
+
 
 
 ## Uso
