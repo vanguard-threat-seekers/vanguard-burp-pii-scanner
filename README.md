@@ -36,6 +36,9 @@ A **PiiScanner Extension** é uma extensão para o Burp Suite desenvolvida para 
   - Selecione o arquivo .jar compilado.
 7. A extensão será carregada automaticamente e estará pronta para uso.
 
+![image](https://github.com/user-attachments/assets/370fc693-9514-43e2-a2f9-7ae0df914b73)
+
+
 ## Uso
 ### Funcionalidade de Detecção e Validação
 A extensão opera interceptando requisições e respostas HTTP, buscando por possíveis CPFs em seu conteúdo. Ao detectar uma sequência de CPF, a extensão:
