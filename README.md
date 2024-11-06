@@ -54,4 +54,5 @@ Abaixo estão exemplos de mensagens de log:
 ## Detalhes Técnicos
 
 ### Estrutura do Projeto
-- Pacote com.vanguard.burp.pii: Contém a classe PiiScanner, que implementa a extensão.
+- Pacote 'com.vanguard.burp.pii': Contém a classe 'PiiScanner', que implementa a extensão.
+- Classe 'PiiScanner': Responsável por interceptar requisições e respostas HTTP, detectar CPFs, validar CPFs e registrar as informações.
