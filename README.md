@@ -78,28 +78,46 @@ Abaixo estão exemplos de mensagens de log:
 ### Exemplo de Código
 Abaixo, um trecho de código com a função de validação:
 
-```bash
+```java
 public boolean isValidCpf(String cpf) {
+    // Remove todos os caracteres não numéricos do CPF, deixando apenas os dígitos.
     cpf = cpf.replaceAll("[^\\d]", "");
 
+    // Verifica se o CPF tem exatamente 11 dígitos e se não é uma sequência repetitiva.
+    // Exemplo: "11111111111" ou "00000000000" não são CPFs válidos.
     if (cpf.length() != 11 || cpf.matches("(\\d)\\1{10}")) {
         return false;
     }
 
+    // Calcula o primeiro dígito verificador
     int sum = 0;
     for (int i = 0; i < 9; i++) {
+        // Converte cada caractere para um número e multiplica pelo peso correspondente (10, 9, ..., 2)
         sum += (cpf.charAt(i) - '0') * (10 - i);
     }
+    // Calcula o valor do primeiro dígito verificador
     int firstCheckDigit = 11 - (sum % 11);
-    if (firstCheckDigit == 10 || firstCheckDigit == 11) firstCheckDigit = 0;
+    // Se o resultado for 10 ou 11, o dígito verificador deve ser 0 (regras do CPF)
+    if (firstCheckDigit == 10 || firstCheckDigit == 11) {
+        firstCheckDigit = 0;
+    }
 
-    sum = 0;
+    // Calcula o segundo dígito verificador
+    sum = 0; // Reinicia a soma para o cálculo do segundo dígito
     for (int i = 0; i < 10; i++) {
+        // Multiplica cada dígito (incluindo o primeiro dígito verificador) pelo peso correspondente (11, 10, ..., 2)
         sum += (cpf.charAt(i) - '0') * (11 - i);
     }
+    // Calcula o valor do segundo dígito verificador
     int secondCheckDigit = 11 - (sum % 11);
-    if (secondCheckDigit == 10 || secondCheckDigit == 11) secondCheckDigit = 0;
+    // Se o resultado for 10 ou 11, o dígito verificador deve ser 0
+    if (secondCheckDigit == 10 || secondCheckDigit == 11) {
+        secondCheckDigit = 0;
+    }
 
+    // Verifica se os dígitos calculados correspondem aos dígitos informados no CPF.
+    // O 10º dígito deve ser igual ao primeiro dígito verificador calculado e o 11º ao segundo dígito verificador.
     return cpf.charAt(9) == (char) ('0' + firstCheckDigit) && cpf.charAt(10) == (char) ('0' + secondCheckDigit);
 }
-    
+```
+
