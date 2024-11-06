@@ -37,7 +37,21 @@ A **PiiScanner Extension** é uma extensão para o Burp Suite desenvolvida para 
 
 ## Uso
 ### Funcionalidade de Detecção e Validação
-####A extensão opera interceptando requisições e respostas HTTP, buscando por possíveis CPFs em seu conteúdo. Ao detectar uma sequência de CPF, a extensão:
-
+A extensão opera interceptando requisições e respostas HTTP, buscando por possíveis CPFs em seu conteúdo. Ao detectar uma sequência de CPF, a extensão:
 - Valida a sequência para assegurar que ela representa um CPF legítimo.
 - Exibe uma mensagem de log no Burp Suite indicando se foi encontrado um CPF válido ou inválido.
+
+### Logs
+Os resultados das detecções serão exibidos no painel de logs do Burp Suite, com uma mensagem indicando:
+- Valid CPF found - CPF válido detectado.
+- Invalid CPF found - CPF inválido detectado.
+
+### Exemplos de saída
+Abaixo estão exemplos de mensagens de log:
+- PII Detected: Valid CPF found - 123.456.789-09
+- PII Detected: Invalid CPF found - 111.111.111-11
+
+## Detalhes Técnicos
+
+### Estrutura do Projeto
+- Pacote com.vanguard.burp.pii: Contém a classe PiiScanner, que implementa a extensão.
