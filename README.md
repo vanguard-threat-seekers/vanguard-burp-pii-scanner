@@ -58,9 +58,48 @@ Abaixo estão exemplos de mensagens de log:
 - Classe `PiiScanner`: Responsável por interceptar requisições e respostas HTTP, detectar CPFs, validar CPFs e registrar as informações.
 
 ### Principais Componentes
+
 1. **Regex para CPF:**
+   
    - O padrão `CPF_PATTERN` utiliza expressões regulares para detectar CPFs em formato `XXX.XXX.XXX-XX` ou como uma sequência de 11 dígitos.
-2. **Validação de CPF:**
+3. **Validação de CPF:**
+   
    - A função `isValidCpf` verifica se o CPF possui 11 dígitos, não é uma sequência repetitiva (como `111.111.111-11`) e calcula os dígitos verificadores de acordo com o algoritmo brasileiro.
-3. **Interceptação HTTP:**
-   - O `HttpHandler` define os métodos `handleHttpRequestToBeSent` e `handleHttpResponseReceived` para processar requisições e respostas HTTP e verificar a presença de CPFs em seus corpos.
+4. **Interceptação HTTP:**
+   
+   - O `HttpHandler` define os métodos `handleHttpRequestToBeSent` e `handleHttpResponseReceived` para processar requisições e respostas HTTP e verificar a presença de CPFs no corpo da requisição/resposta.
+
+### Fluxo de Validação de CPF
+
+1. O CPF detectado é extraído do corpo da requisição/resposta HTTP.
+2. A função `isValidCpf` remove caracteres não numéricos e calcula os dígitos verificadores.
+3. Se o CPF for válido, é registrado como "Valid CPF found"; caso contrário, "Invalid CPF found".
+
+### Exemplo de Código
+Abaixo, um trecho de código com a função de validação:
+
+```bash
+public boolean isValidCpf(String cpf) {
+    cpf = cpf.replaceAll("[^\\d]", "");
+
+    if (cpf.length() != 11 || cpf.matches("(\\d)\\1{10}")) {
+        return false;
+    }
+
+    int sum = 0;
+    for (int i = 0; i < 9; i++) {
+        sum += (cpf.charAt(i) - '0') * (10 - i);
+    }
+    int firstCheckDigit = 11 - (sum % 11);
+    if (firstCheckDigit == 10 || firstCheckDigit == 11) firstCheckDigit = 0;
+
+    sum = 0;
+    for (int i = 0; i < 10; i++) {
+        sum += (cpf.charAt(i) - '0') * (11 - i);
+    }
+    int secondCheckDigit = 11 - (sum % 11);
+    if (secondCheckDigit == 10 || secondCheckDigit == 11) secondCheckDigit = 0;
+
+    return cpf.charAt(9) == (char) ('0' + firstCheckDigit) && cpf.charAt(10) == (char) ('0' + secondCheckDigit);
+}
+    
