@@ -31,7 +31,7 @@ A **PiiScanner Extension** é uma extensão para o Burp Suite desenvolvida para 
 3. Abra o projeto no IntelliJ IDEA e configure o SDK para a versão do JDK instalada.
 4. Compile o projeto, gerando o arquivo .jar.
 5. Você pode baixar o .jar diretamente aqui: https://github.com/vanguard-threat-seekers/vanguard-burp-pii-scanner/blob/main/out/artifacts/pii_scanner_jar/pii-scanner.jar
-6. No Burp Suite, vá até Extender > Extensions e adicione o .jar da extensão:
+6. No Burp Suite, vá até Extensions e adicione o .jar da extensão:
   - Clique em Add.
   - Selecione o arquivo .jar compilado.
 7. A extensão será carregada automaticamente e estará pronta para uso.
