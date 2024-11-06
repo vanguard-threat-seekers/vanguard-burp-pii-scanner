@@ -56,3 +56,11 @@ Abaixo estão exemplos de mensagens de log:
 ### Estrutura do Projeto
 - Pacote `com.vanguard.burp.pii`: Contém a classe `PiiScanner`, que implementa a extensão.
 - Classe `PiiScanner`: Responsável por interceptar requisições e respostas HTTP, detectar CPFs, validar CPFs e registrar as informações.
+
+### Principais Componentes
+1. **Regex para CPF:**
+   - O padrão `CPF_PATTERN` utiliza expressões regulares para detectar CPFs em formato `XXX.XXX.XXX-XX` ou como uma sequência de 11 dígitos.
+2. **Validação de CPF:**
+   - A função `isValidCpf` verifica se o CPF possui 11 dígitos, não é uma sequência repetitiva (como `111.111.111-11`) e calcula os dígitos verificadores de acordo com o algoritmo brasileiro.
+3. **Interceptação HTTP:**
+   - O `HttpHandler` define os métodos `handleHttpRequestToBeSent` e `handleHttpResponseReceived` para processar requisições e respostas HTTP e verificar a presença de CPFs em seus corpos.
