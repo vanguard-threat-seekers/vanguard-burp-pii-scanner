@@ -24,19 +24,20 @@ A **PiiScanner Extension** é uma extensão para o Burp Suite desenvolvida para 
 
 ### Passos para Instalação
 1. Clone este repositório:
+   
    ```bash
    git clone https://github.com/vanguard-threat-seekers/vanguard-burp-pii-scanner.git
    cd vanguard-burp-pii-scanner
-2. Abra o projeto no IntelliJ IDEA e configure o SDK para a versão do JDK instalada.
-3. Compile o projeto, gerando o arquivo .jar.
-4. No Burp Suite, vá até Extender > Extensions e adicione o .jar da extensão:
+3. Abra o projeto no IntelliJ IDEA e configure o SDK para a versão do JDK instalada.
+4. Compile o projeto, gerando o arquivo .jar.
+5. No Burp Suite, vá até Extender > Extensions e adicione o .jar da extensão:
   - Clique em Add.
   - Selecione o arquivo .jar compilado.
 5. A extensão será carregada automaticamente e estará pronta para uso.
 
 ## Uso
 ### Funcionalidade de Detecção e Validação
-**A extensão opera interceptando requisições e respostas HTTP, buscando por possíveis CPFs em seu conteúdo. Ao detectar uma sequência de CPF, a extensão:
+####A extensão opera interceptando requisições e respostas HTTP, buscando por possíveis CPFs em seu conteúdo. Ao detectar uma sequência de CPF, a extensão:
 
-Valida a sequência para assegurar que ela representa um CPF legítimo.
-Exibe uma mensagem de log no Burp Suite indicando se foi encontrado um CPF válido ou inválido.
+- Valida a sequência para assegurar que ela representa um CPF legítimo.
+- Exibe uma mensagem de log no Burp Suite indicando se foi encontrado um CPF válido ou inválido.
