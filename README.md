@@ -46,7 +46,8 @@ A extensão opera interceptando requisições e respostas HTTP, buscando por pos
 - Valida a sequência para assegurar que ela representa um CPF legítimo.
 - Exibe uma mensagem de log no Burp Suite indicando se foi encontrado um CPF válido ou inválido.
 
-![image](https://github.com/user-attachments/assets/b2f44707-aa3a-47c7-96ce-09fbc120875c)
+![image](https://github.com/user-attachments/assets/89ac6218-96e2-4b3b-8ac8-fb54afd4081f)
+
 
 
 
