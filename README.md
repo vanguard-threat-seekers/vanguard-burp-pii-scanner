@@ -120,4 +120,15 @@ public boolean isValidCpf(String cpf) {
     return cpf.charAt(9) == (char) ('0' + firstCheckDigit) && cpf.charAt(10) == (char) ('0' + secondCheckDigit);
 }
 ```
+## Contribuição
 
+Contribuições são bem-vindas! Para contribuir:
+1. Faça um fork do projeto.
+2. Crie uma nova branch (`git checkout -b minha-feature`).
+3. Commit suas alterações (`git commit -m 'Adiciona nova feature'`).
+4. Faça o push para a branch (`git push origin minha-feature`).
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto é licenciado sob a Licença Pública Geral GNU (GNU GPL v3.0) - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
